@@ -1,0 +1,32 @@
+# Below mentioned steps help in configuring and installing multiple Java (JDK) versions.
+
+step-1 : To install JDK-8
+sudo apt-get update
+sudo apt-get install openjdk-8-jdk
+
+step-2: To check the Java version
+java -version
+
+step-3: To install JDK-11
+sudo apt update
+sudo apt install openjdk-11-jdk
+java -version
+
+Step-4: Now we have two Java versions installed on the same Ubuntu system, In order to switch between them, use the below commands-
+sudo update-alternatives --config java
+# It will show all the Java versions installed on the system, Choose any number from the available list to activate the respective Java version.
+
+step-5: How to set specific Java version to all users-
+sudo vi /etc/environment
+
+# For example below command will set java-11 as the default version for all users
+JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+source /etc/environment
+echo $JAVA_HOME
+
+step-6: Set JAVA_HOME specific to a user using the PATH variable.
+JAVA_JOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+export PATH=$PATH:$JAVA_HOME/bin
+
+step 7: To uninstall specific Java versions from the system use the below commands.
+sudo apt-get remove openjdk-11-jdk

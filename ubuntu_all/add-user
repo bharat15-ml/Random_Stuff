@@ -1,0 +1,33 @@
+# You can create new user in ubuntu using two commands - useradd, adduser. Also you should have root permission for that.
+1. create new user using - adduser
+sudo adduser abc
+# then enter all required details
+
+2. To give root or sudo permission to newly added user
+sudo usermod -aG sudo abc
+
+3. To delete user
+sudo deluser abc
+sudo deluser --remove-home abc
+
+# To verify, whether new user created or not
+cat /etc/passwd | grep '^abc'
+
+
+# You can also create new user with low level utility - useradd
+1. sudo useradd -s /path/to/shell -d /home/{dirname} -m -G {secondary-group} {username}
+example - sudo useradd -s /bin/bash -d /home/abc/ -m -G sudo abc
+
+2. sudo passwd {username}
+example - sudo passwd abc
+
+here- 
+-s /bin/bash – Set /bin/bash as login shell of the new account
+-d /home/dir/ – Set /home/abc/ as home directory of the new Ubuntu account
+-m – Create the user’s home directory
+-G sudo – Make sure abc user can sudo i.e. give admin access to the new account
+
+# get more details on above commands, by following linux manual command-
+man useradd
+man passwd
+man adduser
